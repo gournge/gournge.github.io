@@ -16,7 +16,7 @@ This piece of work loosely researches properties of a certain type of a discrete
 
 **Example 2.**
 
-![example of a game with $n=4$](/gournge.github.io/_posts/example%201.jpg)
+![example of a game with $n=4$](/gournge.github.io/assets/img/example%201.jpg)
 *Possible course of the game. Stone 1 jumps right with probability $p$ and takes the stone 2. Next smallest stone is the stone 3 - it jumps left with probability $q$ and takes the stone 1. Finally the next smallest stone - stone 4 - stays in place with probability $1-p-q$.*
 
 **Definition 3.** 
