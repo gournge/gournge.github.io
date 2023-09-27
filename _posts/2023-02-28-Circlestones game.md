@@ -9,6 +9,8 @@ math: true
 
 # Introduction
 
+blah blah
+
 This piece of work loosely researches properties of a certain type of a discrete time random process - a simple game that will be reffered to throughout as *Circlestones*. 
 
 **Definition 1. Circlestones**
