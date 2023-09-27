@@ -24,10 +24,16 @@ This piece of work loosely researches properties of a certain type of a discrete
 
 - - -
 
-There are many questions we can ask about this system, one of which being: *what is the expected stopping time of a game*?
+There are many questions we can ask about this system, e.g. *what is the expected stopping time of a game*?
 
-# Numerical simulations
+# Approximating stopping times
 
-## Explicitly approximating the expected value
+I ran a simulation of a 100 games with different settings, where $p=q$. The x axis stands for the number of stones, while y axis shows after how many steps - on average - the game stopped. 
 
-## Monte Carlo simulation
+![Stopping times for games with different settings](\assets\img\circlestones plot2.png)
+
+It's quite natural to see that as probability of stones staying in place increases, the stopping time increases as well. 
+
+Let's see what happens when there is a tendency of stones to jump to the right.
+
+![Stopping times for games with different settings](\assets\img\circlestones p not q.png)
