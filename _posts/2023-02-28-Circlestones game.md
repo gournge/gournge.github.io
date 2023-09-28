@@ -1,7 +1,7 @@
 ---
 title: Circlestones game
 date: 2023-02-28 10:36 -0600
-categories: [optimisation]
+categories: [probability]
 tags: [random, monte-carlo]
 
 math: true
@@ -9,7 +9,7 @@ math: true
 
 # Introduction
 
-This piece of work loosely researches properties of a certain type of a discrete time random process - a simple game that will be reffered to throughout as *Circlestones*. 
+This piece of work loosely researches properties of a certain type of a discrete time random process - a simple game coined as *Circlestones*. 
 
 **Definition 1. Circlestones**
 > $n$ distinct (numbered) stones are arranged in a circle. For every stone in order (after the $n$-th stone we turn back to the one with the smallest index) we move it right (with probability $p$), left (with probability $q$) or leave it in place (with probability $1-p-q$). If a spot is occupied the current stone takes the place of the stone that has been on the spot earlier. 
@@ -37,3 +37,10 @@ It's quite natural to see that as probability of stones staying in place increas
 Let's see what happens when there is a tendency of stones to jump to the right.
 
 ![Stopping times for games with different settings](/assets/img/circlestones%20p%20not%20q.png)
+
+It's interesting to see these curves overlap, despite different $p, q$ values. 
+To explore the relationship between $p, q$ and the average stopping time, I ran a simulation of a game with $50$ stones. Bottom axis stand for varying $p, q$ values.  
+
+![Stopping times for games with different settings](/assets/img/circlestones%203d%20plot.jpg)
+
+Obviously the plot is symmetrical, as the tendency of stones jumping sideways is symmetric. What's interesting is how non-linearly the average stopping time changes. Whether it is polynomial or exponential - that's a topic for another post.
