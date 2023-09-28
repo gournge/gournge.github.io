@@ -30,10 +30,10 @@ There are many questions we can ask about this system, e.g. *what is the expecte
 
 I ran a simulation of a 100 games with different settings, where $p=q$. The x axis stands for the number of stones, while y axis shows after how many steps - on average - the game stopped. 
 
-![Stopping times for games with different settings](\assets\img\circlestones plot2.png)
+![Stopping times for games with different settings](\assets\img\circlestones%20plot2.png)
 
 It's quite natural to see that as probability of stones staying in place increases, the stopping time increases as well. 
 
 Let's see what happens when there is a tendency of stones to jump to the right.
 
-![Stopping times for games with different settings](\assets\img\circlestones p not q.png)
+![Stopping times for games with different settings](\assets\img\circlestones%20p%20not%20q.png)
