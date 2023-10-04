@@ -7,7 +7,7 @@ tags: [reinforcement-learning]
 math: true
 ---
 
-In April 2023 I have collaborated with my local university - [Politechnika Śląska](https://www.polsl.pl/idub/) to conduct a project under the supervision of a PhD. The project finished with a presentation at a conference that happened in 22th of September. [Here](https://github.com/gournge/cleaning-optimization) is the link to our project repository and [here](https://github.com/gournge/cleaning-optimization/blob/master/posters/poster%20english.pdf) is the english version of our conference poster.
+In April 2023 I have collaborated with [Wojciech Siostrzonek](https://github.com/wotorr3s) and a local university - [Politechnika Śląska](https://www.polsl.pl/idub/) - to conduct a project under the supervision of a PhD. The project finished with a presentation at a conference that happened in 22th of September. [Here](https://github.com/gournge/cleaning-optimization) is the link to our project repository and [here](https://github.com/gournge/cleaning-optimization/blob/master/posters/poster%20english.pdf) is the english version of our conference poster.
 
 We wanted to explore how reinforcement learning algorithms work: we created a little environment in which you could move a broom inside of a room to drop dirt inside *mounds* (they act like holes.)
 
