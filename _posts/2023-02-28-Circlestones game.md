@@ -7,9 +7,8 @@ tags: [random, monte-carlo]
 math: true
 ---
 
-# Introduction
 
-This piece of work loosely researches properties of a certain type of a discrete time random process - a simple game coined as *Circlestones*. 
+This post analyzes a simple discrete system I called *Circlestones*. 
 
 **Definition 1. Circlestones**
 > $n$ distinct (numbered) stones are arranged in a circle. For every stone in order (after the $n$-th stone we turn back to the one with the smallest index) we move it right (with probability $p$), left (with probability $q$) or leave it in place (with probability $1-p-q$). If a spot is occupied the current stone takes the place of the stone that has been on the spot earlier. 
