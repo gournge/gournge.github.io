@@ -10,7 +10,7 @@ math: true
 In September 2023 Polish Central Bank created a [competition](https://nbp.pl/xxi-edycja-konkursu-na-prace-pisemna-dla-szkol-podstawowych-i-ponadpodstawowych/) for an essay in economics exploring the persona of a XVI century astronomer [Nicolaus Copernicus](https://en.wikipedia.org/wiki/Nicolaus_Copernicus). 
 
 
-![Copernicus](https://en.wikipedia.org/wiki/File:Nikolaus_Kopernikus.jpg)
+<!-- ![Copernicus](https://en.wikipedia.org/wiki/File:Nikolaus_Kopernikus.jpg) -->
 *Nicolaus Copenicus (1473-1543)*
 
 Having learned about it 10 days before the deadline, discarding my other schoolwork, I have managed to upload a rough version of my work. The main part of my essay, which I think is a pretty interesting, is a simple model of a multi-currency market I will describe in this post. Project repository is under [this link](https://github.com/gournge/copernicus-transactions).
