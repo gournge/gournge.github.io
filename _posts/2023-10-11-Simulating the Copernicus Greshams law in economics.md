@@ -1,5 +1,5 @@
 ---
-title: Simulating the Copernicus-Gresham's law in currency markets 
+title: Simulating the Copernicus Greshams law in currency markets 
 date: 2023-10-11 10:00 -0600
 categories: [economics]
 tags: [random, monte-carlo, multi-agent]
