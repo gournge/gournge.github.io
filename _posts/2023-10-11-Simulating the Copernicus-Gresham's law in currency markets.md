@@ -22,3 +22,13 @@ Copernicus law has been mistakingly attributed to a scottish economist [Thomas G
 The law is a monetary principle stating that "bad money drives out good". For example, if there are two forms of commodity money in circulation, which are accepted by law as having similar face value, the more valuable commodity will gradually disappear from circulation. (definition from [Wikipedia page](https://en.wikipedia.org/wiki/Gresham%27s_law))
 
 In  *Monete Cudende Ratio* Copernicus also highlights the high possibility of loss of the country, as - based on historical facts he remarkably analyzed - foreign traders had demanded payments in the *better* version of a coin (the one containing more silver.)
+
+# The model
+
+In short, the model is about agents who perform transactions (transfers of funds) in a particular currency. 
+
+## Simulation process
+
+### Initialization 
+
+An environment of agents is first initialized. Each country has an assigned home currency. Each agent has an assigned country id (chosen randomly from a uniform distribution) and a wallet of currencies, which is a list of numbers (same size for every agent) chosen uniformly from the interval $[0, 1]$. Agent's home currency value is then multiplied by a parameter `alpha` $>1$ as to imitate what realistically holds.
