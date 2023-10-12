@@ -1,6 +1,6 @@
 ---
 title: Reinforcement learning about using a broom 
-date: 2023-09-29 14:00 -0600
+date: 2023-09-30 14:00 -0600
 categories: [machine-learning]
 tags: [reinforcement-learning]
 
