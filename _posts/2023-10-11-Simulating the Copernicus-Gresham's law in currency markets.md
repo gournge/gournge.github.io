@@ -77,7 +77,7 @@ To understand what is going to happen, consider this short example.
 *Example:*
 - - - 
 
-Imagine the buyer's wallet is $$ [ \$10, \text{£} 15 ] $$, his as well as seller's home currency is $ \$ $ and the exchange is $$ \$ 1 = \text{£} 0.82 $$ (so $$ \$ 1.22 = \text{£} 1 $$. ) The buyer has chosen the transaction value to be $$\$5$$ (but has not chosen the currency yet.)
+Imagine the buyer's wallet is $$[\$10, \pounds 15 ]$$, his as well as seller's home currency is $$ \$ $$ and the exchange is $$ \$ 1 = \pounds 0.82 $$ (so $$ \$ 1.22 = \pounds 1 $$. ) The buyer has chosen the transaction value to be $$\$5$$ (but has not chosen the currency yet.)
 
 We can assume a couple of (**crucial**) things:
 - buyer is more likely to make a transaction in his home currency if the seller is from his own country;
