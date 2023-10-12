@@ -1,5 +1,5 @@
 ---
-title: Simulating the Copernicus Greshams law in currency markets 
+title: Simulating the Copernicus-Gresham's law in currency markets 
 date: 2023-10-11 10:00 -0600
 categories: [economics]
 tags: [random, monte-carlo, multi-agent]
@@ -10,7 +10,7 @@ math: true
 In September 2023 Polish Central Bank created [a high school competition](https://nbp.pl/xxi-edycja-konkursu-na-prace-pisemna-dla-szkol-podstawowych-i-ponadpodstawowych/) for an essay in economics exploring the persona of a XVI century astronomer [Nicolaus Copernicus](https://en.wikipedia.org/wiki/Nicolaus_Copernicus). 
 
 
-<!-- ![Copernicus](https://en.wikipedia.org/wiki/File:Nikolaus_Kopernikus.jpg) -->
+![Copernicus](https://en.wikipedia.org/wiki/File:Nikolaus_Kopernikus.jpg)
 *Nicolaus Copenicus (1473-1543)*
 
 Having learned about it 10 days before the deadline, discarding my other schoolwork, I have managed to upload a rough version of my exploration. The main part of the essay, which I think is pretty interesting, is a simple model of a multi-currency market I will describe in this post. Project repository is under [this link](https://github.com/gournge/copernicus-transactions).
