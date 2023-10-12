@@ -85,7 +85,34 @@ We can assume a couple of (**crucial**) things:
     - that the lower the currency value is, the more likely the buyer is to want to get rid of it and therefore to use it in the transaction
     - following the previous point, the less primary value the buyer has in this currency (in his wallet), the more likely he is going to use it
 
-In the above scenario we might think that since the pound is $$1.22$$ more expensive, the buyer should be $$1.22$$ times more likely to use it. The decision mechanism was based on the idea described in [this post](https://gournge.github.io/posts/Simple-probability-decision-mechanism/).
+In the above scenario we might think that since the dollar is $$1.22$$ times less expensive, the buyer should be $$1.22$$ times more likely to use it. . Moreover, since he has much less primary value ($$ \$ 10$$) in dollars compared to pounds ($$ \text{£} 15 = \$ 18.26 $$) he should be $$ 18.26 / 10 = 1.826 $$ times more likely to use the dollar. In fact, considering that his home currency of both the seller and the buyer is the dollar, the likelihood of choosing it gets multiplied by some constant `zeta` $$> 1$$ (`zeta` was assumed to equal $$10$$ in many simulations.) Ultimately, when the buyer makes his mind, we expect the probability of choosing the dollar be $$1.22 \cdot 1.826 \cdot 10 = 22.2772$$ times more likely.  
+
+What is calculated in the model, are temporary scores of each option (currency) which are then used to be inversely proportional to probabilities of choosing a currency (the higher the score the lower the probability.) The decision mechanism was based on the idea described in [this post](https://gournge.github.io/posts/Simple-probability-decision-mechanism/).
+
+So in our example the temporary score of the dollar (given `delta = 1.5, epsilon = 0.5`) is:
+
+$$ \text{primary value of USD} ^ \texttt{delta} \cdot \text{primary value of USD in buyer's wallet} ^ \texttt{epsilon} / \texttt{zeta} = 1 ^ 1.5 \cdot 10 ^ 0.5 / 10 \approx 0.316 $$
+
+and of the pound:
+
+$$ 1.22 ^ 1.5 \cdot 18.26 ^ 0.5 \approx 5.758 $$
+
+(Note we didn't divide the pound by `zeta` since it is not both buyer's and seller's currency at once. In this subexample we also assumed different values for `delta` and `epsilon`: you should convice yourself they were previously assumed to be both $1$.)
+
+Hence based on the mentioned probability mechanism the likelihoods of the chosen currency $C$ being the dollar/pound are:
+
+$$ P(C = \$) \approx \frac{\frac{1}{0.316}}{\frac{1}{0.316} + \frac{1}{5.758}} \approx 0.948 $$
+
+$$ P(C = \text{£}) \approx \frac{\frac{1}{5.758}}{\frac{1}{0.316} + \frac{1}{5.758}} \approx 0.052 $$
 
 - - - 
 
+Going back to the simulation: the perceived values (temporary scores) of each currency $$C_i$$ are 
+
+$$ \text{Primary value of $C_i$} ^ \texttt{delta} \times \text{Primary value of buyer's wallet in $C_i$} ^ \texttt{epsilon} $$
+
+in case it is a home currency of both the buyer and the seller, we divide it by `zeta`. 
+
+Next, we plug in these temporary scores to the probability mechanism and use the resulting probabilities to randomly choose the currency in which the transaction will be taken.
+
+Next we transfer the funds, so simply subtract the value of buyer's wallet at the chosen currency index and add it to the appropriate index of the seller. 
