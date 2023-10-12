@@ -25,10 +25,67 @@ In  *Monete Cudende Ratio* Copernicus also highlights the high possibility of lo
 
 # The model
 
-In short, the model is about agents who perform transactions (transfers of funds) in a particular currency. 
+In short, the model is about agents who perform transactions (transfers of funds) in a particular currency.
 
 ## Simulation process
 
+The environment is first initialized with arguments given in this Python command: (see project repo)
+
+```
+python \.simulate.py --population_size 1000
+                     --number_of_countries 4
+                     --number_of_currencies 4
+                     --even_countries_currencies_spread True
+                     --number_of_transactions 100
+                     --number_of_episodes 500
+                     --figure_convolution_window_size 10
+                     --save_figure False
+                     --verbose True
+                     --alpha 20
+                     --beta 0.5
+                     --gamma 0.0086
+                     --delta 1.5
+                     --epsilon 0.5
+                     --zeta 10
+```
+
+Then, over the course of all episodes, randomly chosen agents perform a series of transactions between one another.
+
 ### Initialization 
 
-An environment of agents is first initialized. Each country has an assigned home currency. Each agent has an assigned country id (chosen randomly from a uniform distribution) and a wallet of currencies, which is a list of numbers (same size for every agent) chosen uniformly from the interval $[0, 1]$. Agent's home currency value is then multiplied by a parameter `alpha` $>1$ as to imitate what realistically holds.
+At this stage each country gets an assigned home currency. Each agent gets an assigned country id (chosen randomly from a uniform distribution) and a wallet of currencies, which is a list of numbers (same size for every agent) chosen uniformly from the interval $[0, 1]$. Agent's home currency value is then multiplied by a parameter `alpha` $>1$ as to imitate realism.
+
+Currency exchange in the current model version is constant and is hardcoded into the model to be of currencies: USD, EUR, CHF and GBP.
+
+### Transaction
+
+When a transaction begins, we first choose one random agent from the population, call him *buyer*. To choose the *seller* (receiver of funds) we first assign probabilities to countries, so that an agent from buyer's home country is `gamma` times more likely to be chosen. 
+ 
+With buyer and seller established, we choose the transaction value (as of now measured in the primary currency.)
+
+*Note:*
+> primary currency in which all calculations are done is currency with index 0 - it's assumed this way for the sake of simplicity    
+
+Transaction value, call it $\texttt{t}$ is uniformly chosen at random from the interval $[0, \texttt{budget}]$ where  $\texttt{budget}$ is buyer's total wallet value in the primary currency. 
+
+Next we iterate through buyer's wallet and see what currencies have sufficient funds (that is their value in primary currency is $\geq \texttt{t}$) to record them in some list $\texttt{valid-currencies}$. 
+
+Then we iterate through $\texttt{valid-currencies}$ and assign special values to these valid currencies to store them in an array $\texttt{perceived-values}$. 
+
+To understand what is going to happen, consider this short example.
+
+*Example:*
+- - - 
+
+Imagine the buyer's wallet is $[\$10, \pounds 15 ]$, his as well as seller's home currency is $ \$ $ and the exchange is $ \$ 1 = \pounds 0.82$ (so $ \$ 1.22 = \pounds 1$. ) The buyer has chosen the transaction value to be $\$5$ (but has not chosen the currency yet.)
+
+We can assume a couple of (**crucial**) things:
+- buyer is more likely to make a transaction in his home currency if the seller is from his own country;
+- due to Copernicus' work, it is natural to think: 
+    - that the lower the currency value is, the more likely the buyer is to want to get rid of it and therefore to use it in the transaction
+    - following the previous point, the less primary value the buyer has in this currency (in his wallet), the more likely he is going to use it
+
+In the above scenario we might think that since the pound is $1.22$ more expensive, the buyer should be $1.22$ times more likely to use it. The decision mechanism was based on the idea described in [this post]().
+
+- - - 
+
