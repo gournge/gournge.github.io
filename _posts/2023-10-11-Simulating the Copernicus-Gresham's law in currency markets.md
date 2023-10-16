@@ -119,3 +119,14 @@ in case it is a home currency of both the buyer and the seller, we divide it by 
 Next, we plug in these temporary scores to the probability mechanism and use the resulting probabilities to randomly choose the currency in which the transaction will be taken.
 
 Next we transfer the funds, so simply subtract the value of buyer's wallet at the chosen currency wallet index and add it to the appropriate index of the seller. 
+
+## Simulation results
+
+To gain insight on the simulation process we need to collect some data. In particular, it would be useful to track what proportion of transactions are those with a higher primary value - as to explore the extent to which Copernicus Law holds.
+
+The model collects data about two things: 
+
+1. **Total transaction value in a currency over time.** Every episode we record data on what currencies people used and in what quantities. These are then plot on the top figure in the resulting image. For demonstration I also included a black line that describes how far does an episode deviate from a scenario, in which total transaction values are ordered inversely to their exchange rate value (the cheaper it is the more it is used.)
+
+
+2. **Total transaction value in between different countries overall.**
