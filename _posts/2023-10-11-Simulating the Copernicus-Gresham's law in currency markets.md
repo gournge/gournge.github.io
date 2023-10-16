@@ -53,7 +53,7 @@ Then, over the course of all episodes, randomly chosen agents perform a series o
 
 ### Initialization 
 
-At this stage each country gets an assigned home currency. Each agent gets an assigned country id (chosen randomly from a uniform distribution) and a wallet of currencies, which is a list of numbers (same size for every agent) chosen uniformly from the interval $[0, 1]$. Agent's home currency value is then multiplied by a parameter `alpha` $>1$ as to imitate realism.
+At this stage each country gets an assigned home currency. Each agent gets an assigned country id (chosen randomly from a uniform distribution) and a wallet of currencies, which is a list of numbers (same size for every agent) chosen uniformly from the interval $[0, 1]$. Agent's home currency value is then multiplied by a parameter `alpha` $>1$ as to imitate realism - it's natural to think that people/firms have more funds in their home currency for everyday expenses/overhead costs. 
 
 Currency exchange in the current model version is constant and is hardcoded into the model to be of currencies: USD, EUR, CHF and GBP.
 
@@ -66,7 +66,7 @@ With buyer and seller established, we choose the transaction value (as of now me
 *Note:*
 > primary currency in which all calculations are done is currency with index 0 - it's assumed this way for the sake of simplicity    
 
-Transaction value, call it $\texttt{t}$ is uniformly chosen at random from the interval $[0, \texttt{budget}]$ where  $\texttt{budget}$ is buyer's total wallet value in the primary currency. 
+Transaction value, call it $\texttt{t}$ is uniformly chosen at random from the interval $[0, \texttt{budget} \times \texttt{beta} ]$ where  $\texttt{budget}$ is buyer's total wallet value in the primary currency. We interpret `beta` as the maximum fraction of his total budget an agent is willing to spend. 
 
 Next we iterate through buyer's wallet and see what currencies have sufficient funds (that is their value in primary currency is $\geq \texttt{t}$) to record them in some list $\texttt{valid-currencies}$. 
 
