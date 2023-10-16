@@ -133,4 +133,4 @@ The model collects data about two things:
 
 Below is an example simulation result with above mentioned features (and default parameters):
 
-![default params result](/assets/img/experiment_with_matrix_2023-10-16_164255821555.png)
+![default params result](/assets/img/experiment_with_matrix_2023-10-16_165215030386.png)
