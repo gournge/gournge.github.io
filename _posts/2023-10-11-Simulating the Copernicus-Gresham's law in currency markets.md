@@ -57,14 +57,15 @@ At this stage each country gets an assigned home currency. Each agent gets an as
 
 Currency exchange in the current model version is constant and is hardcoded into the model to be of currencies: USD, EUR, CHF and GBP.
 
+> *Note:* to simplify experimental analysis there is a parameter `even_countries_currencies_spread` that ensures currency assignment to countries is not pure random, but spread evenly. 
+
 ### Transaction
 
 When a transaction begins, we first choose one random agent from the population, call him *buyer*. To choose the *seller* (receiver of funds) we first assign probabilities to countries, so that an agent from buyer's home country is `gamma` times more likely to be chosen. 
  
 With buyer and seller established, we choose the transaction value (as of now measured in the primary currency.)
 
-*Note:*
-> primary currency in which all calculations are done is currency with index 0 - it's assumed this way for the sake of simplicity    
+> *Note:* primary currency in which all calculations are done is currency with index 0 - it's assumed this way for the sake of simplicity    
 
 Transaction value, call it $\texttt{t}$ is uniformly chosen at random from the interval $[0, \texttt{budget} \times \texttt{beta} ]$ where  $\texttt{budget}$ is buyer's total wallet value in the primary currency. We interpret `beta` as the maximum fraction of his total budget an agent is willing to spend. 
 
@@ -126,7 +127,10 @@ To gain insight on the simulation process we need to collect some data. In parti
 
 The model collects data about two things: 
 
-1. **Total transaction value in a currency over time.** Every episode we record data on what currencies people used and in what quantities. These are then plot on the top figure in the resulting image. For demonstration I also included a black line that describes how far does an episode deviate from a scenario, in which total transaction values are ordered inversely to their exchange rate value (the cheaper it is the more it is used.)
+1. **Total transaction value in a currency over time.** Every episode we record data on what currencies people used and in what quantities. These are then plotted on the top figure in the resulting image. For demonstration I also included a black line that describes how far does an episode deviate from a scenario, in which total transaction values are ordered inversely to their exchange rate value (the cheaper it is the more it is used.)
 
+2. **Total transaction value in between different countries over all episodes.** Every episode we record data on what currencies people used and in what quantities to record it in an aggregated list of matrices. Each currency has one relationship matrix that describes how much transaction in this currency happened between pairs of countries.
 
-2. **Total transaction value in between different countries overall.**
+Below is an example simulation result with above mentioned features (and default parameters):
+
+![default params result](/assets/img/experiment_with_matrix_2023-10-16_164255821555.png)
