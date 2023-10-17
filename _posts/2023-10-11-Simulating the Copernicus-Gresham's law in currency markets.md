@@ -121,6 +121,27 @@ Next, we plug in these temporary scores to the probability mechanism and use the
 
 Next we transfer the funds, so simply subtract the value of buyer's wallet at the chosen currency wallet index and add it to the appropriate index of the seller. 
 
+## Parameters summary 
+
+|           **Parameter**          | **Type** |                                        **Explanation**                                        |
+|:--------------------------------:|----------|:---------------------------------------------------------------------------------------------:|
+|        --population_size         | int      |                                                                                               |
+|       --number_of_countries      | int      |                                                                                               |
+|      --number_of_currencies      | int      | Has to be smaller or equal to the number of countries                                         |
+|     --number_of_transactions     | int      |                                                                                               |
+|       --number_of_episodes       | int      |                                                                                               |
+| --figure_convolution_window_size | int      | With how many values do you average out curve                                                 |
+|    --increase_weakest_currency   | bool     | Whether to increase the weakest currency over all the episodes                                |
+| --even_countries_currency_spread | bool     | Whether there should be an evenly distributed spread of assigned currencies between countries |
+|           --save_figure          | bool     |                                                                                               |
+|             --verbose            | bool     | Whether to log progress of the simulation                                                     |
+|              --alpha             | float    | How much more money is an agent expected to have in his home currency                         |
+|              --beta              | float    | What maximum percent of his budget is an agent willing to use for a transaction               |
+|              --gamma             | float    | How much more likely is an agent to make a transaction with someone from their own country    |
+|              --delta             | float    | How much more impact on the probability of choosing currencies does their value have          |
+|             --epsilon            | float    | How much impact on the probability of choosing currencies does agent's wallet contents have   |
+|              --zeta              | float    | How much impact on the probability of choosing currencies does agent's wallet contents have   |
+
 ## Simulation results
 
 To gain insight on the simulation process we need to collect some data. In particular, it would be useful to track what proportion of transactions are those with a higher primary value - as to explore the extent to which Copernicus Law holds.
