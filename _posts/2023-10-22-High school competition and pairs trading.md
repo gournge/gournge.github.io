@@ -13,7 +13,7 @@ In September 2023 Warsaw Stock Exchange (WSE) hosted another edition of [a high 
 
 # Data collection
 
-With the amazing help of Mikołaj Pisula WSE data was scraped and aggregated (for personal & educational purposes only!) from an API endpoint originally intended for graphical display of figures. 
+With the amazing help of my friend Mikołaj WSE data was scraped and aggregated (for personal & educational purposes only!) from an API endpoint originally intended for graphical display of figures. 
 
 # Portfolio optimization 
 
