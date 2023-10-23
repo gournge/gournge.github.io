@@ -11,7 +11,15 @@ math: true
 
 In September 2023 Warsaw Stock Exchange (WSE) hosted another edition of [a high school trading competition](https://sigg.gpw.pl/). As of now (22/10/2023) I am leading a 4 person team of IT-inclined students to apply a pairs trading strategy and a portfolio optimization library. Repository for this project is under [this](https://github.com/gournge/siggRL) link. Personally I am responsible for managing the pairs trading strategy. My friends ensured to: collect data from WSE, run the portfolio optimization algorithm and monitor outputs from my pairs trading algorithm.
 
+# SIGG game description 
+
+Out of all 381 stocks that are available on WSE the game offers 60, along with 11 ETFs and 3 WSE indices (WIG, WIG20, MWIG40.) Our team is initialised with a wallet of 20k PLN. 
+
 # Portfolio split
+
+![portoflio chart split](/assets/img/sigg%20portfolio.svg)
+
+As it was the first time we have tried quantitative techniques (especially the pairs trading strategy) we initially put 40% of our funds  
 
 # Data collection
 
