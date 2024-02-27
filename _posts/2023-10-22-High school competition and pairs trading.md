@@ -31,7 +31,7 @@ With the incredible help of my friend Mikołaj WSE data was scraped and aggregat
 
 To filter out only the 74 assets from 381 available, I copied the SIGG webpage HTML code and parsed it through ChatGPT to obtain relevant Ticker names.
 
-![alt text](/gournge.github.io/assets/img/gpwtrader%20stocks.jpg)
+![alt text](/assets/img/gpwtrader%20stocks.jpg)
 
 # Strategies
 
@@ -74,15 +74,15 @@ We can deduce a pair of stocks is cointegrated if their difference is a stationa
 
 After iterating through the ${74 \choose 2} = 2701$ pairs, which took only a couple of seconds, I considered only the 1000 best pairs (ones most likely to be be cointegrated.) Next, I excluded many pairs through ranking the newly obtained pairs by the number of times the difference crossed the x-axis (see image below.) 
 
-![Pair of cointegrated stocks](/gournge.github.io/assets/img/good%20pair%20grupa%20pracuj%20-%20writualna.png)
+![Pair of cointegrated stocks](/assets/img/good%20pair%20grupa%20pracuj%20-%20writualna.png)
 
 In the end I manually inspected 172 pairs, excluding the ones which seemed to be cointegrated by an accident (like when a Software business was paired with a Metalurgy industry business.) 
 
 Moreover, it looked like many pairs were following the general market trend (but their high volatility induced a large number of crossings in the spread graph.) Here are some examples:
 
-![Bad pair 1](/gournge.github.io/assets/img/bad%20pair%20selvita%20vs%20gpw.png)
+![Bad pair 1](/assets/img/bad%20pair%20selvita%20vs%20gpw.png)
 
-![Bad pair 2](/gournge.github.io/assets/img/bad%20pair%20jsw%20vs%20gpw.png)
+![Bad pair 2](/assets/img/bad%20pair%20jsw%20vs%20gpw.png)
 
 ### Trading with the pairs
 
