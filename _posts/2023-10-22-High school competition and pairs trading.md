@@ -7,7 +7,7 @@ tags: [statistics, pairs-trading, portfolio-optimization, hypothesis-testing]
 math: true
 ---
 
-In September 2023 Warsaw Stock Exchange (WSE) hosted another edition of [a high school trading competition](https://sigg.gpw.pl/), with the first stage spanning three months. As of now (22/10/2023) I lead a 4 person team of IT-inclined students to implement a pairs trading strategy and research for other strategies, like portfolio optimization or others. Repository for this project will be available under [this](https://github.com/gournge/siggRL) link. 
+In September 2023 Warsaw Stock Exchange (WSE) hosted another edition of [a high school trading competition](https://sigg.gpw.pl/), with the first stage spanning three months. I lead a 4 person team to implement a pairs trading strategy and research for others, including portfolio optimization. Repository for this project will be available under [this](https://github.com/gournge/siggRL) link. 
 
 This is a description of what happened throughout, along with most of the technical details. 
 
@@ -15,7 +15,7 @@ tldr; With neatly scraped data I implemented a Pairs Trading strategy, realized 
 
 # SIGG game description 
 
-Out of all 381 stocks that are available on WSE the game offers 60, along with 11 ETFs and 3 WSE indices (WIG, WIG20, MWIG40.) Our team is initialised with a wallet of 20k PLN. 
+Out of all 381 stocks that are available on WSE the game offers 60, along with 11 ETFs and 3 WSE indices (WIG, WIG20, MWIG40.) Each team gets 20k PLN assigned. 
 
 The game offers orders of types: Market order, Limit order, Stop order or Stop limit order. We made only market orders, buying/selling at the currently traded market price.
 
@@ -39,7 +39,7 @@ The single most important thing we had in mind was that in order to gain any sig
 
 To get to any respectable position in the ranking, we should instead be trading the most volatile of stocks, following the market principle that the higher the risk, the higher reward.
 
-Let's look at the daat in the [previous years](https://bank.pl/final-20-edycji-szkolnej-internetowej-gry-gieldowej-zwycieska-druzyna-osiagnela-stope-zwrotu-wynoszaca-1723/) around 30 teams gained any sort of prizes, out of 10k studens (so about 4000 teams). The top team got a return of $17\%$ in half a year, which is pretty extraordinary - the baseline S&P500 index should return $11.36\%$ annually on average (which we have access to through the ETFSP500) so every six months the average investor would tend to earn $\sqrt(11.36\%)=3.37\%$, not $17\%$. Following the parabolic shape of the [efficient frontier curve](https://en.wikipedia.org/wiki/Efficient_frontier), in order to match at least a $15\%$ return we would need to be 5 times more profitable than the market index, therefore the volatility we should be willing to tolerate is $5^2 = 25$ times larger. Over the course of a month, it would be $25 \times 12.84\% = 321\%$
+It becomes apparent when we look at the data: in the [previous years](https://bank.pl/final-20-edycji-szkolnej-internetowej-gry-gieldowej-zwycieska-druzyna-osiagnela-stope-zwrotu-wynoszaca-1723/) around 30 teams gained any sort of prizes, out of 10k studens (so about 4000 teams). The top team got a return of $17\%$ in half a year, which is pretty extraordinary - the baseline S&P500 index should return $11.36\%$ annually on average (which we have access to through the ETFSP500) so every six months the average investor would tend to earn $\sqrt{11.36\%}=3.37\%$, not $17\%$. Following the parabolic shape of the [efficient frontier curve](https://en.wikipedia.org/wiki/Efficient_frontier), in order to match at least a $15\%$ return we would need to be 5 times more profitable than the market index, therefore the volatility we should be willing to tolerate is $5^2 = 25$ times larger. Over the course of a month, it would be a volatilty of $25 \times 12.84\% = 321\%$
 
 Still, this is a strategy we were willing to take only if our main approach would not work. And it didn't. 
 
@@ -64,7 +64,7 @@ For more comprehensible reference, see [this article](https://hudsonthames.org/d
 
 ---
 
-In our case, which spanned only 3 months, I considered only the prior 6 months to check for cointegration - additionally. If we were to consider much longer periods (like prior 2 years) we might have implicitly included currently events like COVID19, which might not have been so relevant in current relationships between companies.
+In our case, which spanned only 3 months, I considered only the prior 6 months to check for cointegration. If we were to consider much longer periods (like the past 2 years) we might have implicitly included events like COVID19, which might not have been so relevant in the current relationships between companies.
 
 ### Finding the pairs 
 
@@ -76,9 +76,9 @@ After iterating through the ${74 \choose 2} = 2701$ pairs, which took only a cou
 
 ![Pair of cointegrated stocks](/assets/img/good%20pair%20grupa%20pracuj%20-%20writualna.png)
 
-In the end I manually inspected 172 pairs, excluding the ones which seemed to be cointegrated by an accident (like when a Software business was paired with a Metalurgy industry business.) 
+In the end I manually inspected 172 pairs, excluding the ones which seemed to be cointegrated by an accident (like when a Software firm was paired with a Metalurgy industry firm.) 
 
-Moreover, it looked like many pairs were following the general market trend (but their high volatility induced a large number of crossings in the spread graph.) Here are some examples:
+Moreover, it looked like many pairs were following the general market trend - they were paired with the Polish Market Index GPW; their high volatility induced a large number of crossings in the spread graph. Here are some examples, with the blue line displaying the GPW Index:
 
 ![Bad pair 1](/assets/img/bad%20pair%20selvita%20vs%20gpw.png)
 
