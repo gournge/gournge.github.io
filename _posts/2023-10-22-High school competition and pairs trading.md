@@ -66,6 +66,8 @@ For more comprehensible reference, see [this article](https://hudsonthames.org/d
 
 In our case, which spanned only 3 months, I considered only the prior 6 months to check for cointegration. If we were to consider much longer periods (like the past 2 years) we might have implicitly included events like COVID19, which might not have been so relevant in the current relationships between companies.
 
+In case of the actual pairs trading, I first aimed to check the prior 3 months for finding the Z-Score trading signals (when to enter/exit the positions.) In the end it didn't really matter since I didn't have any opportunity to backtest this strategy, as I immediately began refactoring to the version without the ability to short.
+
 ### Finding the pairs 
 
 We can deduce a pair of stocks is cointegrated if their difference is a stationary process - a time series that has a constant mean and variation. A statistical test to check if a process is stationary is already implemented in the SciPy library.
@@ -84,6 +86,28 @@ Moreover, it looked like many pairs were following the general market trend - th
 
 ![Bad pair 2](/assets/img/bad%20pair%20jsw%20vs%20gpw.png)
 
-### Trading with the pairs
+Ultimately we settled for 4 pairs of online services, 6 pairs of banks, 1 pair from the energy sector, 1 pair from the software development sector and 1 pair of an international firm and the polish market index.
+
+### Trading with the pairs & system overview
+
+Now that we have chosen a list of pairs, our system collects them in a file `setup.csv`. For each pair I have specified what portfolio percentage (out of all 20k PLN) will be employed. Additionally we keep track of previous stock prices in a `database_2024-01-01_12:00.csv` (updating the name with each content addition) and previous trades in `trades.csv`.
+
+The deployed program goes through the following stages: first, it collects the newest price data. Next, it calculates our position based on trade history and analyzes whether the spread of each pair of stocks has increased/decreased since last time the spread was longed/shorted. 
+
+The analysis of whether the spread is abnormally high or low can be done with various methods, including Kalman Filters or Deep Learning. Here, inspired by [this post](https://robotwealth.com/a-short-take-on-real-world-pairs-trading/) amongst others, it is simply performed by looking at the Z-Score based on the previous 3-months - if current Z-Score crosses a certain threshold (so eg. it's higher than $1.6$ or lower than $-1.6$) and if we have sufficient funds, then we enter an appropriate position. If we had an open position earlier and the Z-Score is in some safety range (e.g. $[-0.5, 0.5]$), then we exit the entire position on this pair.
+
+> Note: in this context it is assumed that longing the spread means longing the first stock in the pair and shorting the other.
+
+More specifically, finding the signal boiled down to looking at the ratio between the prices of two given stocks. Ideally, when entering the position we would like the total value of our Stock 1 holdings to be as close to the total value of Stock 2 holdings, while at the same time employing the maximum possible funds. This was done by looking at all possible quantities of both stocks to be bought and choosing this option which maximizes the value of 
+
+$$
+    f(q_1, q_2) = ( \frac{q_1}{q_2} - 1) ^ 2 + (\frac{q_1 \cdot \text{price}_1 + q_2 * \text{price}_2}{\text{total portfolio}}) ^ 2
+$$
 
 ### Approximating shorting
+
+We assumed constituents percenteges do not change
+
+### Backtest results
+
+![Backtest results](/assets/img/Overlayed%20pairs%20returns%20and%20risks%20(s20_i6_5_4_4).png)
