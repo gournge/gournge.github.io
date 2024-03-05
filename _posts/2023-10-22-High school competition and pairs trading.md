@@ -96,12 +96,12 @@ The deployed program goes through the following stages: first, it collects the n
 
 The analysis of whether the spread is abnormally high or low can be done with various methods, including Kalman Filters or Deep Learning. Here, inspired by [this post](https://robotwealth.com/a-short-take-on-real-world-pairs-trading/) amongst others, it is simply performed by looking at the Z-Score based on the previous 3-months - if current Z-Score crosses a certain threshold (so eg. it's higher than $1.6$ or lower than $-1.6$) and if we have sufficient funds, then we enter an appropriate position. If we had an open position earlier and the Z-Score is in some safety range (e.g. $[-0.5, 0.5]$), then we exit the entire position on this pair.
 
-> Note: in this context it is assumed that longing the spread means longing the first stock in the pair and shorting the other.
+> Note: in this context (and internal repository documentation) it is assumed that longing the spread means longing the first stock in the pair and shorting the other, as it is ordered in `setup.csv`
 
 More specifically, finding the signal boiled down to looking at the ratio between the prices of two given stocks. Ideally, when entering the position we would like the total value of our Stock 1 holdings to be as close to the total value of Stock 2 holdings, while at the same time employing the maximum possible funds. This was done by looking at all possible quantities of both stocks to be bought and choosing this option which maximizes the value of 
 
 $$
-    f(q_1, q_2) = ( \frac{q_1}{q_2} - 1) ^ 2 + (\frac{q_1 \cdot \text{price}_1 + q_2 * \text{price}_2}{\text{total portfolio}}) ^ 2
+    f(q_1, q_2) = ( \frac{q_1}{q_2} - 1) ^ 2 + (\frac{q_1 \cdot \text{price}_1 + q_2 \cdot \text{price}_2}{\text{}}) ^ 2
 $$
 
 ### Approximating shorting
