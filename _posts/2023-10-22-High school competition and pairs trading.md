@@ -110,7 +110,7 @@ So we want two things: the values of two stocks we are holding to be as close as
 
 To motivate this logic with an example, below is a pair that we actually have used in the game, assuming we *shorted the spread* (betting the green line below will go down) at 2023-08-01.
 
-![Example pair](/assets/img/CCC_GRPRC.jng)
+![Example pair](/assets/img/CCC_GRPRC.jpg)
 
 The program fetches current data couple of times a day, sees that current Z-Score ratio didn't cross the safety zone between two blue lines, and so finally recommends to buy 0 CCC and 0 GRPRC. This graph (and all others for different pairs) gets sent to us via email. 
 
