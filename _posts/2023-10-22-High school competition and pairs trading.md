@@ -192,4 +192,4 @@ Thinking that [this paper about Non-Stationary Transformers](https://github.com/
 
 Two weeks before the deadline we decided that we would have to dump all our money into one stock that had a low correlation with the whole market to gain any advantage in the ranking. We had an accidental $3\%$ return.
 
-In the end, contest staff has decided to qualify all teams that showed *any* sign of activity, no matter its place in the ranking. So we qualified to the second round.x    
+In the end, contest staff has decided to qualify all teams that showed *any* sign of activity, no matter its place in the ranking. So we qualified to the second round.
