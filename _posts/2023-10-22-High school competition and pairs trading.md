@@ -145,7 +145,7 @@ We assumed constituents percenteges do not change. The reason was that the Warsa
 The idea was pretty simple. Imagine the Inverse $\text{ABC-Short ETF}$ contains companies $A, B$ and $C$, respectively with percantages $10\%, 30\%, 60 \%$. If we want to short company $A$, we buy $10$ of $\text{ABC-Short ETF}$, $3$ stocks of company $B$ and $6$ stocks of company $C$. $10$ of $\text{ABC-Short ETF}$ would ensure a $-1$ position on $A$, $-3$ position on $B$ and $-6$ position on $C$. So we rebalance the position to be neutral on $B, C$ and arrive with the desired result.
 
 The caveat is that the percentages in WIG20 are often so small we don't have enough funds to have a great short approximation. So in reality the $\text{ABC-Short ETF}$ could be worth 
-$\$10$ and the company $B$ could be worth $\$500$ and you would have to have at least $500 + 10 \cdot ( 500 / (10 \cdot 30\%) ) = \$2166.66$ to be short on $A$ instead of just the cost of $A$.
+$\ $10 $ and the company $B$ could be worth $ \$500 $ and you would have to have at least $500 + 10 \cdot ( 500 / (10 \cdot 30\%) ) = \$ 2166.66 $ to be short on $A$ instead of just the cost of $A$.
 
 Of course, there is some slippage of transactions costs, but I thought that this would be addressed after seeing the whole strategy in action (with the above Mechanism implemented.)
 
