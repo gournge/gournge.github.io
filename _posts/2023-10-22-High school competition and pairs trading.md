@@ -172,7 +172,7 @@ These backtests were a nail in the coffin. There was not a sample time period an
 
 One mistake I realized long after the game was how we could have changed the value function $f(q_1, q_2)$ from the section *"Trading with the pairs & system overview"* to give more importance to the first summand - an allocation that doesn't have the same (absolute) value of two positions on a pair is biased towards one of the stocks.
 
-We could somehow fix this by parametrizing the function $f$ with a paramater $\alpha$ and backtesting to find its optimal value:
+We could somehow fix this by parametrizing the function $f$ with a paramater $\alpha \in (0, 1)$ and backtesting to find its optimal value:
 
 $$
     f(q_1, q_2, \alpha) = \alpha \cdot ( \frac{q_1 \cdot \text{price}_1}{q_2 \cdot \text{price}_2} - 1) ^ 2 + (1 - \alpha ) \cdot (\frac{q_1 \cdot \text{price}_1 + q_2 \cdot \text{price}_2}{\text{available funds}}) ^ 2
