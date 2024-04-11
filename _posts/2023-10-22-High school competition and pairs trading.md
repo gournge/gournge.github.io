@@ -110,7 +110,7 @@ So we want two things: the values of two stocks we are holding to be as close as
 
 To motivate this logic with an example, below is a pair that we actually have used in the game, assuming we *shorted the spread* (betting the green line below will go down) at 2023-08-01.
 
-![Example pair](/assets/img/CCC_GRPRC.jng)
+![Example pair](/assets/img/CCC_GRPRC.jpg)
 
 The program fetches current data couple of times a day, sees that current Z-Score ratio didn't cross the safety zone between two blue lines, and so finally recommends to buy 0 CCC and 0 GRPRC. This graph (and all others for different pairs) gets sent to us via email. 
 
@@ -144,7 +144,8 @@ We assumed constituents percenteges do not change. The reason was that the Warsa
 
 The idea was pretty simple. Imagine the Inverse $\text{ABC-Short ETF}$ contains companies $A, B$ and $C$, respectively with percantages $10\%, 30\%, 60 \%$. If we want to short company $A$, we buy $10$ of $\text{ABC-Short ETF}$, $3$ stocks of company $B$ and $6$ stocks of company $C$. $10$ of $\text{ABC-Short ETF}$ would ensure a $-1$ position on $A$, $-3$ position on $B$ and $-6$ position on $C$. So we rebalance the position to be neutral on $B, C$ and arrive with the desired result.
 
-The caveat is that the percentages in WIG20 are often so small we don't have enough funds to have a great short approximation. So in reality the $\text{ABC-Short ETF}$ could be worth $\$10$ and the company $B$ could be worth $\$500$ and you would have to have at least $500 + 10 \cdot ( 500/ (10 \cdot 30\%) ) = \$2166.66$ to be short on $A$ instead of just the cost of $A$.
+The caveat is that the percentages in WIG20 are often so small we don't have enough funds to have a great short approximation. So in reality the $\text{ABC-Short ETF}$ could be worth 
+$\ $10 $ and the company $B$ could be worth $ \$500 $ and you would have to have at least $500 + 10 \cdot ( 500 / (10 \cdot 30\%) ) = \$ 2166.66 $ to be short on $A$ instead of just the cost of $A$.
 
 Of course, there is some slippage of transactions costs, but I thought that this would be addressed after seeing the whole strategy in action (with the above Mechanism implemented.)
 
@@ -171,7 +172,7 @@ These backtests were a nail in the coffin. There was not a sample time period an
 
 One mistake I realized long after the game was how we could have changed the value function $f(q_1, q_2)$ from the section *"Trading with the pairs & system overview"* to give more importance to the first summand - an allocation that doesn't have the same (absolute) value of two positions on a pair is biased towards one of the stocks.
 
-We could somehow fix this by parametrizing the function $f$ with a paramater $\alpha$ and backtesting to find its optimal value:
+We could somehow fix this by parametrizing the function $f$ with a paramater $\alpha \in (0, 1)$ and backtesting to find its optimal value:
 
 $$
     f(q_1, q_2, \alpha) = \alpha \cdot ( \frac{q_1 \cdot \text{price}_1}{q_2 \cdot \text{price}_2} - 1) ^ 2 + (1 - \alpha ) \cdot (\frac{q_1 \cdot \text{price}_1 + q_2 \cdot \text{price}_2}{\text{available funds}}) ^ 2
@@ -191,4 +192,4 @@ Thinking that [this paper about Non-Stationary Transformers](https://github.com/
 
 Two weeks before the deadline we decided that we would have to dump all our money into one stock that had a low correlation with the whole market to gain any advantage in the ranking. We had an accidental $3\%$ return.
 
-In the end, contest staff has decided to qualify all teams that showed *any* sign of activity, no matter its place in the ranking. So we qualified to the second round.x    
+In the end, contest staff has decided to qualify all teams that showed *any* sign of activity, no matter its place in the ranking. So we qualified to the second round.
