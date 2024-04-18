@@ -7,6 +7,16 @@ tags: [random, monte-carlo, multi-agent]
 math: true
 ---
 
+This short write up is essentially about the idea that when people want to get rid of cheaper currencies in their wallets, these currencies tend to take up a larger portion of all currencies currently in use. 
+
+What we could expect is that these "bad currencies" will finally settle and fall into the wallets of those people, to which these "bad currencies" are home currencies - since they will use them more often then foreigners. 
+
+This turns out to be not that obvious - maybe because of statistical variance in the simulation or the generalistic assumptions I used. Or maybe this is simply not the case, and Copernicus was right in a much more broader sense.
+
+I also looked at some retail movie data and observe that similar to "bad currencies", "bad movies" also outperform the "good movies".
+
+# Intro
+
 In September 2023 Polish Central Bank created [a high school competition](https://nbp.pl/xxi-edycja-konkursu-na-prace-pisemna-dla-szkol-podstawowych-i-ponadpodstawowych/) for an essay in economics exploring the persona of a XVI century astronomer [Nicolaus Copernicus](https://en.wikipedia.org/wiki/Nicolaus_Copernicus). 
 
 
@@ -26,6 +36,8 @@ In  *Monete Cudende Ratio* Copernicus also highlights the high possibility of lo
 # The model
 
 In short, the model is about agents who perform transactions (transfers of funds) in a particular currency.
+
+If you don't care about the details, skip to the *Simulation results* part.
 
 ## Simulation process
 
@@ -140,7 +152,7 @@ Next we transfer the funds, so simply subtract the value of buyer's wallet at th
 |              --gamma             | float    | How much more likely is an agent to make a transaction with someone from their own country    |
 |              --delta             | float    | How much more impact on the probability of choosing currencies does their value have          |
 |             --epsilon            | float    | How much impact on the probability of choosing currencies does agent's wallet contents have   |
-|              --zeta              | float    | How much impact on the probability of choosing currencies does agent's wallet contents have   |
+|              --zeta              | float    | how much impact on the probability of choosing currencies does the fact that the seller is from the same country has   |
 
 ## Simulation results
 
@@ -152,10 +164,25 @@ The model collects data about two things:
 
 2. **Total transaction value in between different countries over all episodes.** Every episode we record data on what currencies people used and in what quantities to record it in an aggregated list of matrices. Each currency has one relationship matrix that describes how much transaction in this currency happened between pairs of countries.
 
-Below is an example simulation result with above mentioned features (and default parameters):
+Below is an example simulation result with above mentioned features. In the first case, I have gradually increased the value of the cheapest currency to become slightly more expensive then all others. In the second, I did not.
 
-![default params result](/assets/img/experiment_with_matrix_2023-10-16_165215030386.png)
+![increase result](/assets/img/copernicus_exp1.png)
+*Gradual increase*
 
-# Discussion and future directions 
+![no increase result](/assets/img/copernicus_exp2.png)
+*No gradual increase*
 
+I encourage the reader to play around with the model's parameters and see what happens. Because there are so many of them to tweak, this post would have been too large. I didn't include all possible combinations. You can only trust me that the same pattern holds.
+
+The primary thing we can observe is that the cheapest currency has the highest usage frequency: on both graphs, their average total value (avg) is the largest. **What is really interesting, is that even in the second case (as we tweak the whole exchange rate) the cheapest currency also begins to dominate the circulation!**
+
+> Note: in the graph, `avg` really stands for the average value of transactions *measured in the home currency*. It is also normalized by the number of people in each country. So the above observation are perhaps not as strong as they may seem. But I would argue they are strong enough to consider the cheapest currency to "dominate".
+
+# Investigating simulation results 
+
+The hypothesis I have described in the very beginning goes as follows: at some point we would expect the cheapest currency to fall out of the circulation. This would happen only if the total transaction value in the "bad currency" would not be a [*Mean reversive process*](https://en.wikipedia.org/wiki/Augmented_Dickey%E2%80%93Fuller_test). More precisely, at some point there would a significant change in the amount of "bad currency" being used. So the mean of the process would have changed - the time series wouldn't have been stationary, exactly like in the bottom case.
+
+![Stationary vs Non-stationary process](https://miro.medium.com/v2/resize:fit:1400/0*u_PyV52-IQFtq1VP.jpeg)
+
+Although you can see on the previously shown experiment results that transaction values were stationary all along, I also run an additional ADF test in Python. It rejected the hypotheses that any of the processes were non-stationary. So they are stationary. They have a consistent mean and variance. You can check it yourself by running `simulate.py`.
 
